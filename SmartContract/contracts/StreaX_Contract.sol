@@ -15,8 +15,8 @@ contract StreaX_Contract{
        mapping(address=>uint256) public balanceOf;
        mapping(address => mapping(address => uint256)) public allowance;
 
-       event Transfer(address , address, uint256); 
-       event Approval(address, address, uint256);
+       event Transfer(address from , address to , uint256 value); 
+       event Approval(address owner, address spender, uint256 value);
 
     //    Taking initial supply to be 100*(10**18)
     // and setting all tokens to owner
