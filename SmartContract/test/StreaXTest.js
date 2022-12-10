@@ -27,7 +27,7 @@ describe('StreaXContract', async() => {
         })
     })
     describe('AfterDeployment ,Minting tokens and issuing if not owner',()=>{
-        it('Trying to create and issue 100 StreaX token(in ether) if not owner',async()=>{
+        it('Trying to create and issue 100 StreaX token(in ether) if not owner and is throwing error',async()=>{
             try {
                 await Streax.connect(user1).CreateTokens(StreaXInEther(100));
             } catch (error) {
@@ -60,7 +60,7 @@ describe('StreaXContract', async() => {
             expect(OwnerBal).to.be.equal(StreaXInEther(50));
             expect(User1Bal).to.be.equal(StreaXInEther(50));
         })
-        it('Transferring 150 Streax token in ether from Owners(deployer) to User1 using TransferToken function', async()=>{
+        it('Transferring 150 Streax token in ether from Owners(deployer) to User1 using TransferToken function and it throws error', async()=>{
             try {
                 await Streax.TransferTokens(user1.address,StreaXInEther(150));
             } catch (error) {
@@ -82,7 +82,7 @@ describe('StreaXContract', async() => {
     })
     describe('Transferring Tokens from User1 to User2 account in ether using TransferFromToken function',async()=>{
           
-        it('Transferrring Tokens from User1 to User2 without allowance',async()=>{
+        it('Transferrring Tokens from User1 to User2 without allowance and it throws error',async()=>{
             await Streax.TransferTokens(user1.address,StreaXInEther(50));
             const bal = await Streax.balanceOf(user1.address);
             expect(bal).to.be.equal(StreaXInEther(50));
